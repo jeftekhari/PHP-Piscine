@@ -1,0 +1,35 @@
+#!/usr/bin/php
+<?
+	if (!$argv[1])
+		exit (1);
+	$default = implode(" ", $argv);
+	print_r($default);
+	$default = explode(" ", $default);
+	$default = array_filter($default, 'strlen');
+	unset($default[0]);	
+	sort($default);
+	foreach ($default as $i => $value)
+	{
+		if (ctype_alpha($value[0]))
+			$alpha[] = $value;
+		elseif (is_numeric($value[0]))
+			$num[] = $value;
+		elseif (!ctype_alpha($value[0]) && !is_numeric($value[0]))
+			$other[] = $value;
+	}
+	if ($alpha)
+	{
+		sort($alpha, SORT_NATURAL | SORT_FLAG_CASE);
+		echo implode("\n", $alpha)."\n";
+	}
+	if ($num)
+	{
+		sort($num, SORT_STRING);
+		echo implode("\n", $num)."\n";
+	}
+	if ($other)
+	{
+		sort($other);
+		echo implode("\n", $other);
+	}
+?>		

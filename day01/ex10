@@ -1,0 +1,26 @@
+#!/usr/bin/php
+<?
+	if ($argc != 4)
+	{
+		echo "Incorrect Parameters\n";
+		exit(1);
+	}
+	$os = "+-*/%";
+	$first = $argv[1];
+	$operator = $argv[2];
+	$second = $argv[3];
+	$first = trim($first);
+	$second = trim($second);
+	$operator = trim($operator);
+	$place = strpos($os, $operator);
+	if($os[$place] == "+")
+		print_r($first + $second."\n"); 
+	if($os[$place] == "-") 
+		print_r($first - $second."\n"); 
+	if($os[$place] == "*") 
+		print_r($first * $second."\n"); 
+	if($os[$place] == "/") 
+		print_r($first / $second."\n"); 
+	if($os[$place] == "%") 
+		print_r($first % $second."\n"); 
+?>
